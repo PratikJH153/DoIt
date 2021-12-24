@@ -1,3 +1,4 @@
+import 'package:challengeapp/views/authentication/register_page.dart';
 import 'package:challengeapp/widgets/asking_user_authentication.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +37,11 @@ class LoginPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(32),
+          padding: const EdgeInsets.only(
+            top: 40,
+            left: 32,
+            right: 32,
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,7 +60,6 @@ class LoginPage extends StatelessWidget {
               ),
               topIntroAuthenticate(
                 context: context,
-                title: "Let's sign you in.",
                 des1: "Welcome back.",
                 des2: "You've been missed!",
               ),
@@ -69,6 +73,7 @@ class LoginPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: TextFormField(
+                  autofocus: false,
                   validator: (val) {},
                   cursorColor: const Color(0xFFf2f4f9),
                   keyboardType: const TextInputType.numberWithOptions(),
@@ -90,8 +95,8 @@ class LoginPage extends StatelessWidget {
                 child: askingUserAuthenticate(
                   context: context,
                   label: "Don't have an account? ",
-                  page: "Register",
-                  route: '/register',
+                  page: "Register.",
+                  route: RegisterPage.routeName,
                 ),
               )
             ],

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 Widget topIntroAuthenticate({
   required BuildContext context,
-  required String title,
   required String des1,
   required String des2,
 }) {
