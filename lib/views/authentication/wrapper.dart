@@ -11,7 +11,7 @@ class Wrapper extends StatefulWidget {
 }
 
 class _WrapperState extends State<Wrapper> {
-  final bool _isAuthenticated = false;
+  final bool _isAuthenticated = true;
 
   @override
   Widget build(BuildContext context) {
