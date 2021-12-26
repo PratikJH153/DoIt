@@ -1,13 +1,28 @@
+import 'dart:io';
+
+import 'package:challengeapp/database/auth.dart';
+import 'package:challengeapp/database/database.dart';
 import 'package:challengeapp/views/authentication/login_page.dart';
 import 'package:challengeapp/views/authentication/user_details_page.dart';
 import 'package:challengeapp/widgets/asking_user_authentication.dart';
 import 'package:challengeapp/widgets/top_intro_authentication.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
   static const routeName = "/register";
   const RegisterPage({Key? key}) : super(key: key);
+
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +33,15 @@ class RegisterPage extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 20),
         child: FloatingActionButton.extended(
           backgroundColor: const Color(0xFF52bf92),
-          onPressed: () =>
-              Navigator.pushNamed(context, UserDetailsPage.routeName),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (ctx) => UserDetailsPage(
+                email: _emailController.text,
+                password: _passwordController.text,
+              ),
+            ),
+          ),
           label: Row(
             children: const [
               Icon(
@@ -75,15 +97,43 @@ class RegisterPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: TextFormField(
+                  controller: _emailController,
                   autofocus: false,
                   validator: (val) {},
                   cursorColor: const Color(0xFFf2f4f9),
-                  keyboardType: const TextInputType.numberWithOptions(),
+                  keyboardType: TextInputType.emailAddress,
                   decoration: const InputDecoration(
-                    hintText: "Phone Number",
+                    hintText: "Email",
                     border: InputBorder.none,
                     prefixIcon: Icon(
-                      CupertinoIcons.device_phone_portrait,
+                      CupertinoIcons.mail,
+                      size: 20,
+                      color: Color(0xFFf2f4f9),
+                    ),
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+                  ),
+                ),
+              ),
+              Container(
+                // padding: const EdgeInsets.symmetric(vertical: 10),
+                margin: const EdgeInsets.only(top: 20),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF292929),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: TextFormField(
+                  controller: _passwordController,
+                  autofocus: false,
+                  validator: (val) {},
+                  cursorColor: const Color(0xFFf2f4f9),
+                  keyboardType: TextInputType.visiblePassword,
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                    hintText: "Password",
+                    border: InputBorder.none,
+                    prefixIcon: Icon(
+                      CupertinoIcons.lock,
                       size: 20,
                       color: Color(0xFFf2f4f9),
                     ),
@@ -98,7 +148,7 @@ class RegisterPage extends StatelessWidget {
                   context: context,
                   label: "Already have an account? ",
                   page: "Login Here.",
-                  route: LoginPage.routeName,
+                  route: LoginPage(),
                 ),
               )
             ],

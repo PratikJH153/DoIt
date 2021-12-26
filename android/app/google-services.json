@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "785415324907",
+    "project_id": "doit-f98ee",
+    "storage_bucket": "doit-f98ee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:785415324907:android:e8383c9671d1bd80636aae",
+        "android_client_info": {
+          "package_name": "com.haum.doit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "785415324907-jkhqaserischtg5c7qt9rkmvnknj9gf2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.haum.doit",
+            "certificate_hash": "170baf68985060e54c6424d9d0fe417d2c592cdc"
+          }
+        },
+        {
+          "client_id": "785415324907-e3tadj0gjdbs9cv2in0lir02jefvqk7d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaJu19HxI0BcT-fI7S2f1bAqBSbCXyUY0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "785415324907-e3tadj0gjdbs9cv2in0lir02jefvqk7d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

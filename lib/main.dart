@@ -1,12 +1,10 @@
-import 'package:challengeapp/views/authentication/login_page.dart';
-import 'package:challengeapp/views/authentication/phone_valid_page.dart';
-import 'package:challengeapp/views/authentication/register_page.dart';
-import 'package:challengeapp/views/authentication/user_details_page.dart';
 import 'package:challengeapp/views/authentication/wrapper.dart';
-import 'package:challengeapp/views/home.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -20,15 +18,34 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xFF1c1c1c),
         primaryColor: const Color(0xFF57dea6),
       ),
-      initialRoute: Wrapper.routeName,
-      routes: {
-        Wrapper.routeName: (ctx) => const Wrapper(),
-        HomePage.routeName: (ctx) => const HomePage(),
-        LoginPage.routeName: (ctx) => const LoginPage(),
-        RegisterPage.routeName: (ctx) => const RegisterPage(),
-        UserDetailsPage.routeName: (ctx) => const UserDetailsPage(),
-        PhoneValidPage.routeName: (ctx) => const PhoneValidPage(),
-      },
+      home: FutureBuilder(
+        future: Firebase.initializeApp(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            print("error");
+          }
+
+          if (snapshot.connectionState == ConnectionState.done) {
+            return const Wrapper();
+          }
+          return Container(
+            color: const Color(0xFF15151a),
+            child: const Center(
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation(Color(0xFF4681fd)),
+              ),
+            ),
+          );
+        },
+      ),
+      // routes: {
+      //   Wrapper.routeName: (ctx) => const Wrapper(),
+      //   HomePage.routeName: (ctx) => const HomePage(),
+      //   LoginPage.routeName: (ctx) => LoginPage(),
+      //   RegisterPage.routeName: (ctx) => const RegisterPage(),
+      //   UserDetailsPage.routeName: (ctx) => const UserDetailsPage(),
+      //   PhoneValidPage.routeName: (ctx) => const PhoneValidPage(),
+      // },
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:challengeapp/views/authentication/register_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -5,7 +6,7 @@ Widget askingUserAuthenticate({
   required BuildContext context,
   required String label,
   required String page,
-  required String route,
+  required Widget route,
 }) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.end,
@@ -23,10 +24,8 @@ Widget askingUserAuthenticate({
         width: 5,
       ),
       GestureDetector(
-        onTap: () => Navigator.pushNamed(
-          context,
-          route,
-        ),
+        onTap: () =>
+            Navigator.push(context, MaterialPageRoute(builder: (ctx) => route)),
         child: Text(
           page,
           style: const TextStyle(

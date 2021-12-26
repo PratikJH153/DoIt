@@ -1,3 +1,4 @@
+import 'package:challengeapp/views/mainPages/create_challenge_page.dart';
 import 'package:challengeapp/widgets/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,27 +17,53 @@ class ChallengesPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            "Hello Pratik 👋",
-            style: kAppTitleTextStyle.copyWith(
-              fontSize: 20,
-            ),
-          ),
-          const SizedBox(
-            height: 6,
-          ),
-          Text(
-            "Let's help each others!",
-            style: kIntroTextStyle.copyWith(
-              color: Colors.grey[500],
-              fontSize: 15,
-              wordSpacing: 2,
-              fontWeight: FontWeight.w300,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Hello Pratik 👋",
+                    style: kAppTitleTextStyle.copyWith(
+                      fontSize: 20,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 6,
+                  ),
+                  Text(
+                    "Let's help each others!",
+                    style: kIntroTextStyle.copyWith(
+                      color: Colors.grey[500],
+                      fontSize: 15,
+                      wordSpacing: 2,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                decoration: const BoxDecoration(
+                  color: Color(0xFF292929),
+                  shape: BoxShape.circle,
+                ),
+                child: IconButton(
+                  onPressed: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (ctx) => CreateChallengePage(),
+                    ),
+                  ),
+                  icon: const Icon(
+                    CupertinoIcons.add,
+                  ),
+                ),
+              )
+            ],
           ),
           Container(
             // padding: const EdgeInsets.symmetric(vertical: 10),
-            margin: const EdgeInsets.symmetric(vertical: 15),
+            margin: const EdgeInsets.symmetric(vertical: 20),
             decoration: BoxDecoration(
               color: const Color(0xFF292929),
               borderRadius: BorderRadius.circular(10),
@@ -180,6 +207,16 @@ class ChallengesPage extends StatelessWidget {
                           ),
                         )
                       ],
+                    ),
+                    Center(
+                      child: Container(
+                        width: 250,
+                        margin: EdgeInsets.only(top: 15),
+                        child: Divider(
+                          thickness: 2,
+                          height: 1,
+                        ),
+                      ),
                     ),
                   ],
                 ),
